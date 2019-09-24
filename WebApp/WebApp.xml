@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApp</name>
+    </assembly>
+    <members>
+        <member name="M:WebApp.Controllers.KioskController.Get">
+            <summary>
+            Get All Menu Items
+            </summary>
+        </member>
+        <member name="M:WebApp.Controllers.KioskController.Get(System.Int32)">
+            <summary>
+            Get Selected Item
+            </summary>
+            <param name="id">Item ID</param>
+        </member>
+    </members>
+</doc>
