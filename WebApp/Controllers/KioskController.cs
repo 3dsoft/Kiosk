@@ -10,7 +10,7 @@ namespace WebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class KioskController : ControllerBase
+    public class KioskController : Controller
     {
         private readonly IMenuItemRepository _menuItemRepository;
 
@@ -42,6 +42,10 @@ namespace WebApp.Controllers
         }
 
         // POST api/<controller>
+        /// <summary>
+        /// Add New Item
+        /// </summary>
+        /// <param name="item">New Item Data</param>
         [HttpPost]
         public ActionResult Post([FromBody] MenuItem item)
         {
@@ -59,6 +63,11 @@ namespace WebApp.Controllers
         }
 
         // PUT api/<controller>/5
+        /// <summary>
+        /// Edit Menu Item
+        /// </summary>
+        /// <param name="id">Item ID</param>
+        /// <param name="item">Edited Menu Item Data</param>
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]MenuItem item)
         {
@@ -70,6 +79,10 @@ namespace WebApp.Controllers
         }
 
         // DELETE api/<controller>/5
+        /// <summary>
+        /// Delete Menu Item
+        /// </summary>
+        /// <param name="id">Item ID</param>
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

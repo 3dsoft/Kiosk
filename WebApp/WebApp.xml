@@ -15,5 +15,24 @@
             </summary>
             <param name="id">Item ID</param>
         </member>
+        <member name="M:WebApp.Controllers.KioskController.Post(WebApp.Models.MenuItem)">
+            <summary>
+            Add New Item
+            </summary>
+            <param name="item">New Item Data</param>
+        </member>
+        <member name="M:WebApp.Controllers.KioskController.Put(System.Int32,WebApp.Models.MenuItem)">
+            <summary>
+            Edit Menu Item
+            </summary>
+            <param name="id">Item ID</param>
+            <param name="item">Edited Menu Item Data</param>
+        </member>
+        <member name="M:WebApp.Controllers.KioskController.Delete(System.Int32)">
+            <summary>
+            Delete Menu Item
+            </summary>
+            <param name="id">Item ID</param>
+        </member>
     </members>
 </doc>
