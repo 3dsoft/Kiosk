@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Project1.Context.Repositories;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,9 +43,21 @@ namespace Project1
             lbl.BackColor = Color.Firebrick;
         }
 
+        /*
+         문제점 : 메뉴가 4개가 있는데, 모든 정보를 받아오는건 부담되기 때문에, 메뉴(menuId)로 구분해서 가져와야함.
+                  모든 아이템을 받아오는 Get은 사용하지 말것.(테스트용)
+                  http://localhost:11799/api/kiosk/menu/1
+             */
+
         private void LblMenu1_Click(object sender, EventArgs e)
         {
-            
+
+            Label label = sender as Label;
+
+            if(true) //label.Name.ToUpper() == "BURGER")
+            {
+                var list = MenuItemRepository.GetAllItems();
+            }
         }
         #endregion
 

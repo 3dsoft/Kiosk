@@ -20,6 +20,11 @@ namespace WebApp.Context.Repositories
             return _context.MenuItems.Where(c => c.isUse == true).ToList();
         }
 
+        public IEnumerable<MenuItem> GetAllMenuItems(int id)
+        {
+            return _context.MenuItems.Where(c => c.MenuId == id).ToList();
+        }
+
         public MenuItem GetItem(int id)
         {
             return _context.MenuItems.FirstOrDefault(c => c.Id == id);

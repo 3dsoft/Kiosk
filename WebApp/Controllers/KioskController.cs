@@ -41,6 +41,14 @@ namespace WebApp.Controllers
             return _menuItemRepository.GetItem(id);
         }
 
+
+        [HttpGet("menu/{id}")]
+        public IEnumerable<MenuItem> GetMenu(int id)
+        {
+            return _menuItemRepository.GetAllMenuItems(id);
+        }
+
+
         // POST api/<controller>
         /// <summary>
         /// Add New Item
