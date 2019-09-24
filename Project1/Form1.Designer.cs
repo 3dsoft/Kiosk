@@ -38,9 +38,16 @@
             this.lblMenu2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblMenu1 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -50,8 +57,9 @@
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(15, 10, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(708, 730);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(708, 490);
             this.flowLayoutPanel1.TabIndex = 3;
+            this.flowLayoutPanel1.MouseHover += new System.EventHandler(this.flowLayoutPanel1_MouseHover);
             // 
             // tableLayoutPanel1
             // 
@@ -60,13 +68,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.btnMenuDown, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnMenuUp, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(908, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 365F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(100, 730);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 246F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(100, 490);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // btnMenuDown
@@ -76,9 +83,9 @@
             this.btnMenuDown.FlatAppearance.BorderSize = 0;
             this.btnMenuDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuDown.Image = global::Project1.Properties.Resources.down_arrow2;
-            this.btnMenuDown.Location = new System.Drawing.Point(3, 368);
+            this.btnMenuDown.Location = new System.Drawing.Point(3, 247);
             this.btnMenuDown.Name = "btnMenuDown";
-            this.btnMenuDown.Size = new System.Drawing.Size(94, 359);
+            this.btnMenuDown.Size = new System.Drawing.Size(94, 240);
             this.btnMenuDown.TabIndex = 1;
             this.btnMenuDown.UseVisualStyleBackColor = false;
             this.btnMenuDown.Click += new System.EventHandler(this.BtnMenuUp_Click);
@@ -92,7 +99,7 @@
             this.btnMenuUp.Image = global::Project1.Properties.Resources.up_arrow2;
             this.btnMenuUp.Location = new System.Drawing.Point(3, 3);
             this.btnMenuUp.Name = "btnMenuUp";
-            this.btnMenuUp.Size = new System.Drawing.Size(94, 359);
+            this.btnMenuUp.Size = new System.Drawing.Size(94, 238);
             this.btnMenuUp.TabIndex = 0;
             this.btnMenuUp.UseVisualStyleBackColor = false;
             this.btnMenuUp.Click += new System.EventHandler(this.BtnMenuUp_Click);
@@ -118,7 +125,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 730);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 762);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // lblMenu4
@@ -202,12 +209,86 @@
             this.lblMenu1.MouseLeave += new System.EventHandler(this.LblMenu1_MouseLeave);
             this.lblMenu1.MouseHover += new System.EventHandler(this.LblMenu1_MouseHover);
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.OldLace;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(201, 490);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(9);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(567, 272);
+            this.flowLayoutPanel2.TabIndex = 4;
+            this.flowLayoutPanel2.WrapContents = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.lblTotal);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Location = new System.Drawing.Point(771, 490);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(236, 237);
+            this.panel1.TabIndex = 6;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Font = new System.Drawing.Font("나눔고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTotal.Location = new System.Drawing.Point(99, 9);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(126, 41);
+            this.lblTotal.TabIndex = 3;
+            this.lblTotal.Text = "\\999,000";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("나눔고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(9, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 41);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "총 금 액 :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(13, 58);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(210, 115);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "계  산";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("나눔고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(13, 179);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(210, 51);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "비 우 기";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(1008, 730);
+            this.ClientSize = new System.Drawing.Size(1008, 762);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -220,6 +301,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -235,6 +317,12 @@
         private System.Windows.Forms.Label lblMenu3;
         private System.Windows.Forms.Label lblMenu2;
         private System.Windows.Forms.Label lblMenu1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button2;
     }
 }
 

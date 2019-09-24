@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -51,14 +52,102 @@ namespace Project1
 
         private void LblMenu1_Click(object sender, EventArgs e)
         {
+            List<Project1.Models.MenuItem> list = new List<Project1.Models.MenuItem>();
 
             Label label = sender as Label;
 
-            if(true) //label.Name.ToUpper() == "BURGER")
+            switch(label.Text.ToUpper())
             {
-                var list = MenuItemRepository.GetAllItems();
+                case "BURGER":
+                    list = MenuItemRepository.GetAllMenuItem(0);
+                    break;
+                case "MCMORNING":
+                    list = MenuItemRepository.GetAllMenuItem(1);
+                    break;
+                case "DRINK":
+                    list = MenuItemRepository.GetAllMenuItem(2);
+                    break;
+                case "SIDE":
+                    list = MenuItemRepository.GetAllMenuItem(3);
+                    break;
+            }
+
+            if(list.Count > 0)
+            {
+                flowLayoutPanel1.Controls.Clear();
+
+                AddItems(list);
+
+                scrollOffset = 0;
             }
         }
+
+        private void AddItems(List<Project1.Models.MenuItem> list)
+        {
+            Random r = new Random();
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                Panel pn = new Panel();
+                pn.Size = new Size(220, 230);
+                MenuItem mi = new MenuItem(list[i]);
+                mi.Name = "ml" + list[i].Id.ToString();
+                mi.isMenuList = true;
+                mi.MenuSelected += Mi_MenuSelected;
+                pn.Controls.Add(mi);
+
+                flowLayoutPanel1.Controls.Add(pn);
+
+                flowLayoutPanel1.PerformLayout();
+
+                if (flowLayoutPanel1.Controls.Count / 3 > 1)
+                {
+                    flowLayoutPanel1.VerticalScroll.Maximum = ((flowLayoutPanel1.Controls.Count / 3) - 1) * 230;
+                }
+            }
+            
+            Debug.Print($"### Menu Click : {flowLayoutPanel1.VerticalScroll.Value} / Max ({flowLayoutPanel1.VerticalScroll.Maximum}) / Min ({flowLayoutPanel1.VerticalScroll.Minimum})");
+        }
+
+        private void Mi_MenuSelected(object sender, Models.MenuItem mm)
+        {
+            Panel pn = new Panel();
+            pn.Size = new Size(220, 230);
+            MenuItem mi = new MenuItem(mm);
+            mi.isMenuList = false;
+            mi.RemoveFromCart += Mi_RemoveFromCart;
+            pn.Name = "cart" + mm.Id.ToString();
+            pn.Controls.Add(mi);
+            flowLayoutPanel2.Controls.Add(pn);
+
+            flowLayoutPanel2.HorizontalScroll.Value = flowLayoutPanel2.HorizontalScroll.Maximum;
+
+            flowLayoutPanel1.PerformLayout();
+        }
+
+        private void Mi_RemoveFromCart(object sender, Models.MenuItem menuItem)
+        {
+            //flowLayoutPanel2.Controls.Remove(((MenuItem)flowLayoutPanel2.Controls["cart" + menuItem.Id.ToString()]));
+
+            Control selectedControl = new Control();
+            foreach (Control control in flowLayoutPanel2.Controls)
+            {
+                if(control.Name == "cart" + menuItem.Id.ToString())
+                {
+                    selectedControl = control;
+                    break;
+                }
+            }
+
+            if(selectedControl != null && selectedControl.Name == "cart" + menuItem.Id.ToString())
+            {
+                flowLayoutPanel2.Controls.Remove(selectedControl);
+            }
+        }
+
+
+
+
         #endregion
 
 
@@ -103,31 +192,36 @@ namespace Project1
         #region TEST Function
         private void SeedItem(int count)
         {
-            Random r = new Random();
+            //Random r = new Random();
 
-            for (int i = 0; i < count; i++)
-            {
-                Panel pn = new Panel();
-                pn.Size = new Size(220, 230);
-                MenuItem mi = new MenuItem();
-                mi.Location = new Point(0, 0);
-                mi.image = Image.FromFile($"./Images/burger{r.Next(1, 13)}.png");
-                mi.MenuName = "Name " + i.ToString("000");
-                mi.MenuPrice = r.Next(1000, 10000).ToString("C");
-                pn.Controls.Add(mi);
+            //for (int i = 0; i < count; i++)
+            //{
+            //    Panel pn = new Panel();
+            //    pn.Size = new Size(220, 230);
+            //    MenuItem mi = new MenuItem();
+            //    mi.Location = new Point(0, 0);
+            //    mi.image = Image.FromFile($"./Images/burger{r.Next(1, 13)}.png");
+            //    mi.MenuName = "Name " + i.ToString("000");
+            //    mi.MenuPrice = r.Next(1000, 10000).ToString("C");
+            //    pn.Controls.Add(mi);
 
-                flowLayoutPanel1.Controls.Add(pn);
+            //    flowLayoutPanel1.Controls.Add(pn);
 
-                flowLayoutPanel1.PerformLayout();
+            //    flowLayoutPanel1.PerformLayout();
 
-                if (flowLayoutPanel1.Controls.Count / 3 > 1)
-                {
-                    flowLayoutPanel1.VerticalScroll.Maximum = ((flowLayoutPanel1.Controls.Count / 3) - 1) * 230;
-                }
-            }
+            //    if (flowLayoutPanel1.Controls.Count / 3 > 1)
+            //    {
+            //        flowLayoutPanel1.VerticalScroll.Maximum = ((flowLayoutPanel1.Controls.Count / 3) - 1) * 230;
+            //    }
+            //}
 
             Debug.Print($"### Menu Click : {flowLayoutPanel1.VerticalScroll.Value} / Max ({flowLayoutPanel1.VerticalScroll.Maximum}) / Min ({flowLayoutPanel1.VerticalScroll.Minimum})");
         }
         #endregion
+
+        private void flowLayoutPanel1_MouseHover(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Focus();
+        }
     }
 }

@@ -17,13 +17,24 @@ namespace Project1.Context.Repositories
             var response = client.Get(request);
             if(response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-
                 List<MenuItem> list = JsonConvert.DeserializeObject<List<MenuItem>>(response.Content);
 
                 return list;
             }
+            return null;
+        }
 
+        public static List<Project1.Models.MenuItem> GetAllMenuItem(int menuId)
+        {
+            var client = new RestClient("http://localhost:11799/");
+            var request = new RestRequest("api/kiosk/menu/{id}");
+            request.AddUrlSegment("id", menuId.ToString());
 
+            var response = client.Get(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                return JsonConvert.DeserializeObject<List<Project1.Models.MenuItem>>(response.Content);
+            }
             return null;
         }
     }

@@ -36,13 +36,13 @@ namespace WebApp
 
             services.AddScoped<IMenuItemRepository, MenuItemRepository>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Kiosk", Version = "v1", Description = "Web API for Kiost Test" });
-                c.IncludeXmlComments("WebApp.xml");
+                //c.IncludeXmlComments("WebApp.xml");
             });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,7 +60,6 @@ namespace WebApp
 
             app.UseStaticFiles();
             app.UseHttpsRedirection();
-            app.UseMvc();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -68,6 +67,11 @@ namespace WebApp
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
                 c.RoutePrefix = string.Empty;
             });
+
+
+            app.UseMvc();
+
+        
         }
     }
 }
