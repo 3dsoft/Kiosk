@@ -40,10 +40,10 @@
             this.lblMenu1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,7 +59,6 @@
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(15, 10, 0, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(708, 490);
             this.flowLayoutPanel1.TabIndex = 3;
-            this.flowLayoutPanel1.MouseHover += new System.EventHandler(this.flowLayoutPanel1_MouseHover);
             // 
             // tableLayoutPanel1
             // 
@@ -235,31 +234,24 @@
             this.panel1.Size = new System.Drawing.Size(236, 237);
             this.panel1.TabIndex = 6;
             // 
-            // lblTotal
+            // button2
             // 
-            this.lblTotal.Font = new System.Drawing.Font("나눔고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTotal.Location = new System.Drawing.Point(99, 9);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(126, 41);
-            this.lblTotal.TabIndex = 3;
-            this.lblTotal.Text = "\\999,000";
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("나눔고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(9, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 41);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "총 금 액 :";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(13, 179);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(210, 51);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "비 우 기";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(13, 58);
             this.button1.Name = "button1";
@@ -268,18 +260,25 @@
             this.button1.Text = "계  산";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // lblTotal
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("나눔고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(13, 179);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(210, 51);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "비 우 기";
-            this.button2.UseVisualStyleBackColor = false;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTotal.Location = new System.Drawing.Point(99, 9);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(126, 41);
+            this.lblTotal.TabIndex = 3;
+            this.lblTotal.Text = "\\0";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(9, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 41);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "총 금 액 :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 

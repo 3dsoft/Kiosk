@@ -1,4 +1,5 @@
 ﻿using Project1.Context.Repositories;
+using Project1.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,13 @@ namespace Project1
 {
     public partial class Form1 : Form
     {
+        Receipt receipt;
+
         public Form1()
         {
             InitializeComponent();
+
+            receipt = Receipt.GetReceipt();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -123,6 +128,8 @@ namespace Project1
             flowLayoutPanel2.HorizontalScroll.Value = flowLayoutPanel2.HorizontalScroll.Maximum;
 
             flowLayoutPanel1.PerformLayout();
+
+            lblTotal.Text = receipt.GetTotalPrice().ToString();
         }
 
         private void Mi_RemoveFromCart(object sender, Models.MenuItem menuItem)
@@ -143,6 +150,8 @@ namespace Project1
             {
                 flowLayoutPanel2.Controls.Remove(selectedControl);
             }
+
+            lblTotal.Text = receipt.GetTotalPrice().ToString();
         }
 
 

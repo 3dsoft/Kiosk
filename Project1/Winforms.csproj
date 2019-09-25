@@ -61,19 +61,20 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuItem.cs">
+    <Compile Include="UserControls\MenuItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MenuItem.Designer.cs">
+    <Compile Include="UserControls\MenuItem.Designer.cs">
       <DependentUpon>MenuItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\Receipt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuItem.resx">
+    <EmbeddedResource Include="UserControls\MenuItem.resx">
       <DependentUpon>MenuItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -155,6 +156,9 @@
     <Content Include="Images\side6.png" />
     <Content Include="Images\side7.png" />
     <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project1.Models;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -12,6 +13,8 @@ namespace Project1
     {        
         public event SelectedMenuEvent MenuSelected;
         public event SelectedMenuEvent RemoveFromCart;
+
+        Receipt receipt;
 
         public bool isMenuList;
         public bool IsMenuList
@@ -69,6 +72,9 @@ namespace Project1
             {
                 if (MessageBox.Show("추가하시겠습니까?", "Select", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 {
+                    receipt = Receipt.GetReceipt();
+                    receipt.AddReceipt(this.menuItem);
+
                     this.MenuSelected(sender, this.menuItem);
                 }
             }
@@ -76,6 +82,9 @@ namespace Project1
             {
                 if (MessageBox.Show("선택 항목에서 제외하시겠습니까?", "Select", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 {
+                    receipt = Receipt.GetReceipt();
+                    receipt.RemoveReceipt(this.menuItem);
+
                     this.RemoveFromCart(sender, this.menuItem);
                 }
             }
