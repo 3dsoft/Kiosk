@@ -54,6 +54,34 @@ namespace WebApp.Context.Repositories
             }
         }
 
+        public void AddPayment(Payment payment)
+        {
+            Payment2 pay2 = new Payment2()
+            {
+                dateTime = payment.dateTime,
+                paymentType = payment.paymentType,
+                totalPrice = payment.totalPrice
+            };
+            _context.Payments.Add(pay2);
+
+            foreach (var item in payment.menuItems)
+            {
+                PaymentList list = new PaymentList()
+                {
+                    dateTime = payment.dateTime,
+                    mainId = item.Id,
+                    MenuId = item.MenuId,
+                    Name = item.Name,
+                    ImagePath = item.ImagePath,
+                    Price = item.Price,
+                    isUse = item.isUse
+                };
+
+                _context.PaymentLists.Add(list);
+            }
+        }
+            
+
         public void Save()
         {
             _context.SaveChanges();

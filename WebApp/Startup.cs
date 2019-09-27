@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using WebApp.Context;
 using WebApp.Context.Repositories;
+using WebApp.Services.Mail;
 
 namespace WebApp
 {
@@ -29,10 +31,29 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
+            });
+
+            services.Configure<CookieTempDataProviderOptions>(options =>
+            {
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddDbContext<WebAppContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -._@+";
+                config.SignIn.RequireConfirmedEmail = false;
+            })
+                .AddEntityFrameworkStores<WebAppContext>()
+                .AddDefaultTokenProviders();
 
             services.AddScoped<IMenuItemRepository, MenuItemRepository>();
 
@@ -42,7 +63,29 @@ namespace WebApp
                 c.IncludeXmlComments("WebApp.xml");
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizeFolder("/");
+                options.Conventions.AllowAnonymousToPage("/Error");
+                options.Conventions.AllowAnonymousToPage("/Account/AccessDenied");
+                options.Conventions.AllowAnonymousToPage("/Account/ConfirmEmail");
+                options.Conventions.AllowAnonymousToPage("/Account/ExternalLogin");
+                options.Conventions.AllowAnonymousToPage("/Account/ForgotPassword");
+                options.Conventions.AllowAnonymousToPage("/Account/ForgotPasswordConfirmation");
+                options.Conventions.AllowAnonymousToPage("/Account/Lockout");
+                options.Conventions.AllowAnonymousToPage("/Account/Login");
+                options.Conventions.AllowAnonymousToPage("/Account/LoginWith2fa");
+                options.Conventions.AllowAnonymousToPage("/Account/LoginWithRecoveryCode");
+                options.Conventions.AllowAnonymousToPage("/Account/Register");
+                options.Conventions.AllowAnonymousToPage("/Account/ResetPassword");
+                options.Conventions.AllowAnonymousToPage("/Account/ResetPasswordConfirmation");
+                options.Conventions.AllowAnonymousToPage("/Account/SignedOut");
+            })
+                .SetCompatibilityVersion(CompatibilityVersion.Latest);
+
+            services.AddSingleton<IMailManager, EmptyMailManager>();
+
+            services.AddScoped<Services.Profile.ProfileManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,15 +94,21 @@ namespace WebApp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
+                app.UseExceptionHandler("/Error");
+
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
+            app.UseCookiePolicy();
             app.UseStaticFiles();
             app.UseHttpsRedirection();
+
+            app.UseAuthentication();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -69,9 +118,12 @@ namespace WebApp
             });
 
 
-            app.UseMvc();
-
-        
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action=Index}/{id?}");
+            });
         }
     }
 }

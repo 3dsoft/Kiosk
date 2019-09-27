@@ -45,6 +45,10 @@ namespace Project1.Models
             menuItems.Remove(menuItems.Where(c => c.Id == id).FirstOrDefault());
         }
 
+        public void ClearReceipt()
+        {
+            menuItems.Clear();
+        }
 
         public int GetTotalPrice()
         {
@@ -57,6 +61,7 @@ namespace Project1.Models
 
             return total;
         }
+
 
     }
 }

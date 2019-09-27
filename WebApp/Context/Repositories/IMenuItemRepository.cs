@@ -12,5 +12,7 @@ namespace WebApp.Context.Repositories
         MenuItem GetItem(int id);
         void Save();
         void Update(int id, MenuItem item);
+
+        void AddPayment(Payment payment);
     }
 }

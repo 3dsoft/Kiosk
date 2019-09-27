@@ -21,6 +21,13 @@
             </summary>
             <param name="item">New Item Data</param>
         </member>
+        <member name="M:WebApp.Controllers.KioskController.PostPayment(WebApp.Models.Payment)">
+            <summary>
+            결제 정보를 받아서 DB에 저장한다.
+            </summary>
+            <param name="payment"></param>
+            <returns></returns>
+        </member>
         <member name="M:WebApp.Controllers.KioskController.Put(System.Int32,WebApp.Models.MenuItem)">
             <summary>
             Edit Menu Item

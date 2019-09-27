@@ -70,6 +70,27 @@ namespace WebApp.Controllers
             }
         }
 
+        /// <summary>
+        /// 결제 정보를 받아서 DB에 저장한다.
+        /// </summary>
+        /// <param name="payment"></param>
+        /// <returns></returns>
+        [HttpPost("payment")]
+        public ActionResult PostPayment([FromBody] Payment payment)
+        {
+            if(ModelState.IsValid)
+            {
+                _menuItemRepository.AddPayment(payment);
+                _menuItemRepository.Save();
+
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
+
         // PUT api/<controller>/5
         /// <summary>
         /// Edit Menu Item
