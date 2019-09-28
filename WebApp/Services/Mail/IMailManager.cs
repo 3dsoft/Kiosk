@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApp.Services.Mail
+namespace Company.WebApplication1.Services.Mail
 {
     public interface IMailManager
     {

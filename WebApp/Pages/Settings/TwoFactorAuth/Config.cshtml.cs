@@ -1,16 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Company.WebApplication1.Data;
+using Company.WebApplication1.Services.Mail;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 using WebApp.Context;
-
-namespace WebApp.Pages.Settings.TwoFactorAuth
+namespace Company.WebApplication1.Pages.Settings.TwoFactorAuth
 {
     public class ConfigModel : PageModel
     {
@@ -126,7 +128,7 @@ namespace WebApp.Pages.Settings.TwoFactorAuth
         {
             return string.Format(
                 AuthenicatorUriFormat,
-                _urlEncoder.Encode("WebApp"),
+                _urlEncoder.Encode("Company.WebApplication1"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }

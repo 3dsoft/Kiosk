@@ -5,19 +5,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Company.WebApplication1.Data;
+using Company.WebApplication1.Services;
+using Company.WebApplication1.Services.Mail;
 using WebApp.Context;
-
-namespace WebApp.Pages.Account
+namespace Company.WebApplication1.Pages.Account
 {
     public class ForgotPasswordModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        //private readonly IMailManager _emailSender;
+        private readonly IMailManager _emailSender;
 
-        public ForgotPasswordModel(UserManager<ApplicationUser> userManager) //, IMailManager emailSender)
+        public ForgotPasswordModel(UserManager<ApplicationUser> userManager, IMailManager emailSender)
         {
             _userManager = userManager;
-            //_emailSender = emailSender;
+            _emailSender = emailSender;
         }
 
         [BindProperty]
@@ -45,7 +47,7 @@ namespace WebApp.Pages.Account
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
-                //await _emailSender.SendResetPasswordAsync(Input.Email, callbackUrl);
+                await _emailSender.SendResetPasswordAsync(Input.Email, callbackUrl);
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }
 

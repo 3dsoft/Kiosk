@@ -1,6 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Web;
 
-namespace WebApp.Data.DataAnnotations
+namespace Company.WebApplication1.Data.DataAnnotations
 {
     public class IsTrueRequired : ValidationAttribute
     {

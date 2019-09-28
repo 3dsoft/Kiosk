@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebApp.Pages.UI
+namespace Company.WebApplication1.Pages.UI
 {
     public class SlidersModel : PageModel
     {

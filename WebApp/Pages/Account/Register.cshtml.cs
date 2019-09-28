@@ -1,31 +1,36 @@
-using WebApp.Pages.Account;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
+using Company.WebApplication1.Data;
+using Company.WebApplication1.Services;
+using Company.WebApplication1.Data.DataAnnotations;
+using Company.WebApplication1.Services.Mail;
 using WebApp.Context;
-using WebApp.Data.DataAnnotations;
-
-namespace WebApp.Pages.Account
+namespace Company.WebApplication1.Pages.Account
 {
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
-        //private readonly IMailManager _emailSender;
+        private readonly IMailManager _emailSender;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<LoginModel> logger) //,            IMailManager emailSender)
+            ILogger<LoginModel> logger,
+            IMailManager emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            //_emailSender = emailSender;
+            _emailSender = emailSender;
         }
 
         [BindProperty]
@@ -79,7 +84,7 @@ namespace WebApp.Pages.Account
                     
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                    //await _emailSender.SendEmailConfirmationAsync(Input.Email, callbackUrl);
+                    await _emailSender.SendEmailConfirmationAsync(Input.Email, callbackUrl);
 
                     //await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(Url.GetLocalUrl(returnUrl));

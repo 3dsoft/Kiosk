@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Company.WebApplication1.Services.Mail;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,7 +16,6 @@ using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using WebApp.Context;
 using WebApp.Context.Repositories;
-using WebApp.Services.Mail;
 
 namespace WebApp
 {
@@ -60,7 +60,7 @@ namespace WebApp
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Kiosk", Version = "v1", Description = "Web API for Kiost Test" });
-                c.IncludeXmlComments("WebApp.xml");
+               // c.IncludeXmlComments("WebApp.xml");
             });
 
             services.AddMvc().AddRazorPagesOptions(options =>
@@ -85,7 +85,7 @@ namespace WebApp
 
             services.AddSingleton<IMailManager, EmptyMailManager>();
 
-            services.AddScoped<Services.Profile.ProfileManager>();
+            services.AddScoped<Company.WebApplication1.Services.Profile.ProfileManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -114,9 +114,8 @@ namespace WebApp
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                c.RoutePrefix = string.Empty;
+                //c.RoutePrefix = string.Empty;
             });
-
 
             app.UseMvc(routes =>
             {

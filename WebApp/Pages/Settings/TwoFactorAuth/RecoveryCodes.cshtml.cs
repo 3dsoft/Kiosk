@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Company.WebApplication1.Data;
+using Company.WebApplication1.Services.Mail;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using WebApp.Context;
 
-namespace WebApp.Pages.Settings.TwoFactorAuth
+namespace Company.WebApplication1.Pages.Settings.TwoFactorAuth
 {
     public class RecoveryCodesModel : PageModel
     {

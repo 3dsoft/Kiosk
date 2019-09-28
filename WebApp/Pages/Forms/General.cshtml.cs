@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebApp.Pages.Forms
+namespace Company.WebApplication1.Pages.Forms
 {
     public class GeneralModel : PageModel
     {

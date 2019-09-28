@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Company.WebApplication1.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Context;
 
-namespace WebApp.Services.Profile
+namespace Company.WebApplication1.Services.Profile
 {
     public class ProfileManager
     {

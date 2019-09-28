@@ -1,11 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
-using System.Threading.Tasks;
+using Company.WebApplication1.Data;
 using WebApp.Context;
 
-namespace WebApp.Pages.Account
+namespace Company.WebApplication1.Pages.Account
 {
     public class ConfirmEmailModel : PageModel
     {

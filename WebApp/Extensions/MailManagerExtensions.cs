@@ -1,6 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using WebApp.Services.Mail;
+using Company.WebApplication1.Services.Mail;
 
 namespace Microsoft.AspNetCore.Mvc
 {

@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using Company.WebApplication1.Data;
+using Company.WebApplication1.Services.Mail;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WebApp.Context;
-
-namespace WebApp.Pages.Settings
+namespace Company.WebApplication1.Pages.Settings
 {
     public class SecurityModel : PageModel
     {

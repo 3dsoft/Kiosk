@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebApp.Pages.Account
+namespace Company.WebApplication1.Pages.Account
 {
     public class SignedOutModel : PageModel
     {
