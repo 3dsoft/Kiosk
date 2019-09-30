@@ -52,6 +52,12 @@ namespace WebApp
             {
                 config.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -._@+";
                 config.SignIn.RequireConfirmedEmail = false;
+                config.Password.RequireDigit = false;
+                config.Password.RequiredLength = 4;
+                config.Password.RequiredUniqueChars = 0;
+                config.Password.RequireLowercase = false;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Password.RequireUppercase = false;
             })
                 .AddEntityFrameworkStores<WebAppContext>()
                 .AddDefaultTokenProviders();

@@ -63,13 +63,14 @@
 
                             <div class="col-sm-10">
                                 <input type="password" class="form-control" id="inputNewPassword" name="NewPassword" placeholder="New password"
-                                       data-val="true"
+                                       @*data-val="true"
                                        data-val-length="The Password must be at least 6 and at max 100 characters long."
-                                       data-val-length-max="100"
-                                       data-val-length-min="6"
+                                       data-val-length-max="30"
+                                       data-val-length-min="3"
                                        data-val-regex="The field Password must match the regular expression &#x27;^((?=.*[a-z])(?=.*[A-Z])(?=.*\d).&#x2B;$)&#x27;."
                                        data-val-regex-pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d).&#x2B;$)"
-                                       data-val-required="The Password field is required.">
+                                       data-val-required="The Password field is required."*@
+                                       >
                                 <span class="field-validation-valid help-block"
                                       data-valmsg-for="NewPassword"
                                       data-valmsg-replace="true"></span>
@@ -80,9 +81,9 @@
 
                             <div class="col-sm-10">
                                 <input type="password" class="form-control" id="inputConfirmPassword" name="ConfirmPassword" placeholder="Confirm password"
-                                       data-val="true"
+                                       @*data-val="true"
                                        data-val-equalto="The password and confirmation password do not match."
-                                       data-val-equalto-other="NewPassword">
+                                       data-val-equalto-other="NewPassword">*@>
                                 <span class="field-validation-valid help-block"
                                       data-valmsg-for="ConfirmPassword"
                                       data-valmsg-replace="true"></span>
