@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Company.WebApplication1.Services.Profile;
 using Company.WebApplication1.Services.Mail;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -56,6 +57,7 @@ namespace WebApp
                 .AddDefaultTokenProviders();
 
             services.AddScoped<IMenuItemRepository, MenuItemRepository>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
 
             services.AddSwaggerGen(c =>
             {

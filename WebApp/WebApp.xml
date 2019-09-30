@@ -4,6 +4,27 @@
         <name>WebApp</name>
     </assembly>
     <members>
+        <member name="M:WebApp.Context.Repositories.PaymentRepository.GetAllPayment">
+            <summary>
+            결제 결과만 가져온다. (상세 항목 제외)
+            </summary>
+        </member>
+        <member name="M:WebApp.Context.Repositories.PaymentRepository.GetAllPaymentCount">
+            <summary>
+            총 결제 개수
+            </summary>
+        </member>
+        <member name="M:WebApp.Context.Repositories.PaymentRepository.GetAllPaymentList(System.DateTime)">
+            <summary>
+            결제 상세 내역만 가져온다.
+            dateTime값을 기준으로 같은것을 가져온다.
+            </summary>
+        </member>
+        <member name="M:WebApp.Context.Repositories.PaymentRepository.GetAllPaymentListCount">
+            <summary>
+            전체 결제 상세 내역 개수
+            </summary>
+        </member>
         <member name="M:WebApp.Controllers.KioskController.Get">
             <summary>
             Get All Menu Items

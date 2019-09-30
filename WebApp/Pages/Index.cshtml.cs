@@ -9,9 +9,9 @@ namespace Company.WebApplication1.Pages
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            return RedirectToAction("Dashboard2", "dashboards");
         }
     }
 }
