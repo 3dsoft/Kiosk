@@ -71,6 +71,12 @@ namespace WebApp.Context.Repositories
 
 
 
+        // ## Save ######################################################################
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
 
     }
 }

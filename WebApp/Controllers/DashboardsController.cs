@@ -27,13 +27,12 @@ namespace WebApp.Controllers
         public IActionResult Dashboard2()
         {
             //ViewBag.TotalUser = _paymentRepository.GetAllPaymentCount();
-
             //ViewBag.TotalPayment = _paymentRepository.GetAllPaymentListCount();
-
             //ViewBag.TotalPrice = _paymentRepository.GetAllPaymentPrice().ToString("C");
 
             PaymentViewModel payment = new PaymentViewModel()
             {
+                Payment = _paymentRepository.GetAllPayment(),
                 TotalUser = _paymentRepository.GetAllPaymentCount(),
                 TotalPayment = _paymentRepository.GetAllPaymentListCount(),
                 TotalPrice = _paymentRepository.GetAllPaymentPrice()
