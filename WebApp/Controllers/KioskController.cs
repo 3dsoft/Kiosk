@@ -1,8 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using WebApp.Context.Repositories;
 using WebApp.Models;
 
@@ -21,7 +18,6 @@ namespace WebApp.Controllers
         }
 
 
-        // GET: api/<controller>
         /// <summary>
         /// Get All Menu Items
         /// </summary>
@@ -31,7 +27,6 @@ namespace WebApp.Controllers
             return _menuItemRepository.GetAllItems();
         }
 
-        // GET api/<controller>/5
         /// <summary>
         /// Get Selected Item
         /// </summary>
@@ -50,7 +45,6 @@ namespace WebApp.Controllers
         }
 
 
-        // POST api/<controller>
         /// <summary>
         /// Add New Item
         /// </summary>
@@ -75,7 +69,6 @@ namespace WebApp.Controllers
         /// 결제 정보를 받아서 DB에 저장한다.
         /// </summary>
         /// <param name="payment"></param>
-        /// <returns></returns>
         [HttpPost("payment")]
         public ActionResult PostPayment([FromBody] Payment payment)
         {
@@ -92,12 +85,12 @@ namespace WebApp.Controllers
             }
         }
 
-        // PUT api/<controller>/5
         /// <summary>
         /// Edit Menu Item
         /// </summary>
         /// <param name="id">Item ID</param>
         /// <param name="item">Edited Menu Item Data</param>
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]MenuItem item)
         {
@@ -108,7 +101,6 @@ namespace WebApp.Controllers
             }
         }
 
-        // DELETE api/<controller>/5
         /// <summary>
         /// Delete Menu Item
         /// </summary>
