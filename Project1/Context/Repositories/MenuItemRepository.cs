@@ -10,6 +10,9 @@ namespace Project1.Context.Repositories
 {
     public class MenuItemRepository
     {
+        /// <summary>
+        /// [TEST] 모든 메뉴 아이템을 가져온다.
+        /// </summary>
         public static List<MenuItem> GetAllItems()
         {
             var client = new RestClient("http://localhost:11799/");
@@ -24,6 +27,9 @@ namespace Project1.Context.Repositories
             return null;
         }
 
+        /// <summary>
+        /// 선택한 메뉴에 맞는 하위 메뉴 아이템들을 가져온다.
+        /// </summary>
         public static List<Project1.Models.MenuItem> GetAllMenuItem(int menuId)
         {
             var client = new RestClient("http://localhost:11799/");

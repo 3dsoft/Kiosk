@@ -11,6 +11,9 @@ namespace Project1.Context.Repositories
 {
     public class ReceiptRepository
     {
+        /// <summary>
+        /// 결제 버튼을 클릭하면 결제 내용을 POST 형식으로 전송한다.
+        /// </summary>
         public static bool SendPayment(Payment payment)
         {
             var client = new RestClient("http://localhost:11799");

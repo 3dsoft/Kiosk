@@ -56,8 +56,10 @@ namespace WebApp
                 .AddEntityFrameworkStores<WebAppContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddSingleton<IMailManager, EmptyMailManager>();
             services.AddScoped<IMenuItemRepository, MenuItemRepository>();
             services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<ProfileManager>();
 
             services.AddSwaggerGen(c =>
             {
@@ -84,10 +86,6 @@ namespace WebApp
                 options.Conventions.AllowAnonymousToPage("/Account/SignedOut");
             })
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
-
-            services.AddSingleton<IMailManager, EmptyMailManager>();
-
-            services.AddScoped<Company.WebApplication1.Services.Profile.ProfileManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

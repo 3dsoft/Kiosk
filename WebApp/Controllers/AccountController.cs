@@ -6,6 +6,7 @@ using WebApp.Context;
 
 namespace WebApp.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
